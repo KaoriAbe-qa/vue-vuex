@@ -19,15 +19,18 @@ const store = new Vuex.Store({
       state.count--
     }
   },
-   getters: {},
+   getters:  {
+    count: state => state.count,
+  },
    actions: {
      increment({ commit }) {
-         commit("increment");
+         commit("increment", { root: true });
      },
      decrement({ commit }) {
-         commit("decrement");
+         commit("decrement", { root: true });
      }
-   }
+   },
+   namespace: true,
 })
 
 //store.stateで参照

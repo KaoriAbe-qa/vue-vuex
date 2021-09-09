@@ -10,8 +10,7 @@ let store
 let actions
 let mutations
 let state
-
-
+let action
 
 beforeEach(() => {
     actions = {
@@ -25,13 +24,14 @@ beforeEach(() => {
     }
 
     state = {
-        count: 1
-    };
+        count : 1
+    }
 
     store = new Vuex.Store({
         actions,
         mutations: {},
         state: {},
+        count:{}
     }),
     
     wrapper = shallowMount(index, {
@@ -39,6 +39,8 @@ beforeEach(() => {
         localVue
     })
 });
+
+
 
 describe("store", () => {
     
@@ -60,31 +62,28 @@ describe("store", () => {
        });
     });
 
-    const { increment } = index
     describe("mutations", () => {
 
         it("mutations: should be able to increment counter", () => {
-          mutations.increment(state)
-          wrapper.mutations
-          wrapper.increment
-          wrapper = mutations.increment(state)
-          store.commit('increment')
+            
+            // wrapper.mutations.increment(state);
+            // wrapper(index.mutations);
+            // console.log(state.count)
 
           //1なのでstateの更新ができてない……
-          console.log(state.count)
-          console.log(store.state.count)
+          //console.log(state.count)
+          
         　// 結果を検証
           //expect(state.count).toBe(2)
         })
     
         it("mutations: should be able to decrement counter", () => {
-            mutations.decrement(state)
-            wrapper.mutations
+            //mutations.decrement(state)
+            //wrapper.mutations
+            //store.commit('decrement')
           　// 結果を検証する
-            console.log(state.count)
+            //console.log(state.count)
             //expect(state.count).toBe(0)
         });
       });
-
-
-  });
+});
